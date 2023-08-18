@@ -1,0 +1,35 @@
+{
+  "Quick Eunm": {
+    "scope": "typescript",
+    "prefix": "ed",
+    "body": ["/** ${1:注释} */", "${2:VarName}$0"]
+  },
+  "InitReactComponent": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "rfi",
+    "body": [
+      "import { FC } from \"react\";",
+      "import * as SC from \"./styles\";",
+      "",
+      "interface ${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}Props {}",
+      "",
+      "const ${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}: FC<${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}Props> = () => {",
+      "  return <SC.${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}Container>${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}</SC.${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}Container>;",
+      "};",
+      "",
+      "export default ${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g};"
+    ],
+    "description": "InitReactComponents"
+  },
+  "InitReactStyleComponent": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "rsi",
+    "body": [
+      "import styled from \"styled-components\";",
+      "",
+      "export const ${TM_DIRECTORY/.*[\\/\\\\](.*)$/$1/g}Container = styled.div``;",
+      ""
+    ],
+    "description": "InitReactStyleComponents"
+  }
+}
