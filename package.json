@@ -1,8 +1,12 @@
 {
-  "name": "my-noname",
+  "name": "grid-line",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "siykt",
+    "email": "cnsiykt@163.com"
+  },
   "scripts": {
     "dev": "vite --host --port 8081 --mode development",
     "build": "tsc && vite build",
