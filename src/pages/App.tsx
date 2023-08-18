@@ -27,9 +27,14 @@ const App = () => {
       const y1 = clientY - y;
       // 排除鼠标超出容器的情况
       if (x1 < 0 || y1 < 0 || x1 > SC.GRID_SIZE * 10 || y1 > SC.GRID_SIZE * 10) return;
+      // 计算当前鼠标所在行
+      const row = Math.floor(y1 / SC.GRID_SIZE);
+      // 计算当前鼠标所在列
+      const col = Math.floor(x1 / SC.GRID_SIZE);
       // 计算当前鼠标所在的格子
-      const index = Math.floor(x1 / SC.GRID_SIZE) + Math.floor(y1 / SC.GRID_SIZE) * 10;
+      const index = col + row * 10;
       hash.add(index);
+      // 更新选中的格子
       setActiveGridSet(new Set(hash));
     };
     // 鼠标抬起时取消全局事件
@@ -44,10 +49,12 @@ const App = () => {
 
   return (
     <SC.Container>
+      {/* 从 onMouseDown 触发时开始绘制 */}
       <SC.GridWrapper ref={gridWrapperRef} onMouseDown={startDraw}>
         {Array(100)
           .fill(0)
           .map((_, i) => (
+            // 选中状态
             <SC.GridItem key={i} active={activeGridSet.has(i)} />
           ))}
       </SC.GridWrapper>
